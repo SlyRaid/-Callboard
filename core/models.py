@@ -15,8 +15,8 @@ class Car(models.Model):
 
 class Student(models.Model):
     name = models.CharField('Имя', max_length=255)
-    age = models.IntegerField()
-    grade = models.FloatField()
+    age = models.IntegerField('Возраст')
+    grade = models.FloatField('Оценка')
 
     class Meta:
         verbose_name = 'Студент'
