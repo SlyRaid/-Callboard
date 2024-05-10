@@ -3,4 +3,4 @@ from core import models
 
 
 admin.site.register(models.Car)
-admin.site.register(models.Student)
+admin.site.register(models.Marka_car)

@@ -1,8 +1,10 @@
 from django.urls import path
-from core import views
+
+from .views import *
 
 
 urlpatterns = [
-    path('time/', views.current_datetime),
-    path('', views.index),
+    path('time/', current_datetime),
+    path('', index),
+    path('mark/<int:marka_id>', get_mark),
 ]

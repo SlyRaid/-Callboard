@@ -10,9 +10,11 @@ class Car(models.Model):
     )
 
     car_name = models.CharField('Название', max_length=100)
-    car_body = models.CharField('Кузов', max_length=100, choices=TYPE_CHOICE, default='saloon')
+    car_body = models.CharField('Кузов', max_length=100, choices=TYPE_CHOICE, null=True)
     information = models.TextField('Информация', null=True, blank=True)
-    car_img = models.ImageField('Фото', upload_to='pictures', null=True, blank=True)
+    car_img = models.ImageField('Фото', upload_to='media', null=True, blank=True)
+
+    marka = models.ForeignKey('Marka_car', on_delete=models.CASCADE, verbose_name='Марка', null=True)
 
     class Meta:
         verbose_name = 'Машина'
@@ -22,17 +24,15 @@ class Car(models.Model):
         return self.car_name
 
 
-class Student(models.Model):
-    first_name = models.CharField('Фамилия', max_length=20, default='')
-    last_name = models.CharField('Имя', max_length=10, default='')
-    age = models.PositiveIntegerField('Возраст')
-
-    grade = models.FloatField('Оценка')
-    expelled = models.BooleanField('Исключен', default=False)
+class Marka_car(models.Model):
+    title = models.CharField(max_length=150, db_index=True, verbose_name='Марка машины')
 
     class Meta:
-        verbose_name = 'Студент'
-        verbose_name_plural = 'Студенты'
+        verbose_name = 'Марка'
+        verbose_name_plural = 'Марки'
+        ordering = ['title']
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}'
+        return self.title
+
+

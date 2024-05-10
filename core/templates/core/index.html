@@ -11,32 +11,41 @@
 <body>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="navbar-brand">
+    <div class="navbar-brand  m-2 h1">
         <a class="navbar-brand" href="/">Главная страница</a>
-        <a class="navbar-brand" href="#">Добавление машины</a>
+        <a class="navbar-brand" href="#">Добавление марки</a>
         <a class="navbar-brand" href="#">Админка</a>
 
 
     </div>
 </nav>
 
-<div class="container mt-3">
+<div class="container m-3">
 
     <h1>{{ title }}</h1>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <ul class="list-group">
+                {% for mark in mark_info %}
+                <a href="/mark/{{ mark.pk }}" class="list-group-item"> {{ mark.title }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-9">
             {% for item in car_info %}
-            <div class="card text-center">
-                <div class="card-header">
-                    Марка
+            <div class="card mb-3 mt-3">
+                <div class="card-header h3">
+                    {{ item.marka }}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.car_name }}</h5>
                     <p class="card-text">{{ item.information }}</p>
                     <a href="#" class="btn btn-primary">Еще?(Пока отдыхает)</a>
                 </div>
-                <img src="..." class="card-img-bottom" alt="Здесь должны быть картинка, но она будет чуть позже =) так как их нужно скачать">
+                {% if item.car_img %}
+                <img src="/media/{{ item.car_img }}" class="card m-3" alt="" width="854" height="480">
+                {% endif %}
             </div>
             {% endfor %}
         </div>
