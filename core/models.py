@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Car(models.Model):
@@ -23,6 +24,8 @@ class Car(models.Model):
     def __str__(self) -> str:
         return self.car_name
 
+    def get_absolute_url(self):
+        pass
 
 class Marka_car(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Марка машины')
@@ -34,5 +37,3 @@ class Marka_car(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
-

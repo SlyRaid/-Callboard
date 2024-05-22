@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список</title>
+</head>
+<body>
+<h1>QQ</h1>
+{% for item in Car %}
+<ul class="list-group">
+    <li class="list-group-item">Марка - {{ item.marka }}, Модель - {{ item.car_name }}, кузов - {{ item.car_body }}</li>
+</ul>
+{% endfor %}
+</body>
+</html>
