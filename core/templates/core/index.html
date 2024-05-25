@@ -10,9 +10,13 @@
 {% endblock %}
 
 {% block content %}
+<form method="get">
+        {{ filters.form.as_p }}
+        <input type="submit" />
+    </form>
 <div class="col-md-9">
-    {% for item in car_info %}
-    <div class="card mb-3 mt-3">
+    {% for item in filters.qs %}
+    <div class="card ">
         <div class="card-header h3">
             {{ item.marka }}
         </div>

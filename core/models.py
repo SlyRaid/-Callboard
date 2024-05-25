@@ -24,8 +24,9 @@ class Car(models.Model):
     def __str__(self) -> str:
         return self.car_name
 
-    def get_absolute_url(self):
-        pass
+    def get_full_name(self):
+        name = f'{self.marka} {self.car_name}'
+        return name
 
 class Marka_car(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Марка машины')

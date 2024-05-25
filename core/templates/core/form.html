@@ -1,14 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Form</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
+{% extends "base.html" %}
+
+{% block title %}
+<h1>МАРКИ</h1>
+{% endblock %}
+
+{% block foms %}
+    <form method="get">
         {{ form.as_p }}
-        <input type="submit" value="Send message">
+        <input type="submit" />
     </form>
-</body>
-</html>
+    {% for obj in qs %}
+        {{ obj.car_name }}<br />
+    {% endfor %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-9">
+    {% for item in car_info %}
+    <div class="card mb-3 mt-3">
+        <div class="card-header h3">
+            {{ item.marka }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.car_name }}</h5>
+            {% if item.car_img %}
+            <img src="{{ item.car_img.url }}" class="card ml-3, mt-3, mb-3" alt="" width="854" height="480">
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

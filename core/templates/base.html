@@ -19,11 +19,15 @@
     </div>
 </nav>
 
+
 <div class="container m-3">
 
     {% block title %} {% endblock %}
 
-    <div class="row">
+    <div class="row g-3 align-items-center">
+
+
+        {% comment %}
         <div class="col-md-2">
             <ul class="list-group">
                 {% for mark in mark_info %}
@@ -31,6 +35,9 @@
                 {% endfor %}
             </ul>
         </div>
+        {% endcomment %}
+
+
         {% block content %} {% endblock %}
     </div>
 </div>
