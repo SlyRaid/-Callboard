@@ -7,7 +7,7 @@ from .views import *
 app_name = 'core'
 
 router = DefaultRouter()
-router.register('api/carlist', CarView, basename='CARS')
+router.register(r'carlist', CarView)
 
 urlpatterns = [
     # path('', HomePageView.as_view()),
